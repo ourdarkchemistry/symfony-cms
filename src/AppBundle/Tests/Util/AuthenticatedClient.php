@@ -8,15 +8,6 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class AuthenticatedClient extends WebTestCase
 {
-    /**
-     * Returns authenticated session for specified username
-     *
-     * @since 26/12/2015
-     * @author Diego Nobre <dcnobre@gmail.com)
-     *
-     * @param $username
-     * @return \Symfony\Bundle\FrameworkBundle\Client
-     */
     public static function login($username = 'dcnobre@gmail.com')
     {
         $client = static::createClient();
