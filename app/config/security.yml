@@ -1,11 +1,8 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
         AppBundle\Entity\CustomUser: bcrypt
     role_hierarchy:
-        # ROLE_ADMIN can access all that ROLE_USER can access
         ROLE_ADMIN: [ROLE_USER]
     providers:
         chain_providers:
@@ -25,7 +22,6 @@ security:
                 target: /
             security: true
             anonymous: true
-            # @see http://symfony.com/doc/current/cookbook/security/remember_me.html
             remember_me:
                 secret:   '%secret%'
                 lifetime: 604800
