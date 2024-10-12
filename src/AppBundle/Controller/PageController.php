@@ -10,21 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Page;
 use AppBundle\Form\Type\PageType;
 
-/**
- * Page controller.
- *
- * @Route("/cms/page")
- */
 class PageController extends Controller
 {
-
-    /**
-     * Lists all Page entities.
-     *
-     * @Route("/", name="cms_page")
-     * @Method("GET")
-     * @Template()
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -35,13 +22,6 @@ class PageController extends Controller
             'entities' => $entities,
         );
     }
-    /**
-     * Creates a new Page entity.
-     *
-     * @Route("/", name="cms_page_create")
-     * @Method("POST")
-     * @Template("AppBundle:Page:new.html.twig")
-     */
     public function createAction(Request $request)
     {
         $entity = new Page();
@@ -61,14 +41,6 @@ class PageController extends Controller
             'form'   => $form->createView(),
         );
     }
-
-    /**
-     * Creates a form to create a Page entity.
-     *
-     * @param Page $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createCreateForm(Page $entity)
     {
         $form = $this->createForm(new PageType(), $entity, array(
@@ -80,14 +52,6 @@ class PageController extends Controller
 
         return $form;
     }
-
-    /**
-     * Displays a form to create a new Page entity.
-     *
-     * @Route("/new", name="cms_page_new")
-     * @Method("GET")
-     * @Template()
-     */
     public function newAction()
     {
         $entity = new Page();
@@ -98,14 +62,6 @@ class PageController extends Controller
             'form'   => $form->createView(),
         );
     }
-
-    /**
-     * Finds and displays a Page entity.
-     *
-     * @Route("/{id}", name="cms_page_show")
-     * @Method("GET")
-     * @Template()
-     */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -123,14 +79,6 @@ class PageController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-
-    /**
-     * Displays a form to edit an existing Page entity.
-     *
-     * @Route("/{id}/edit", name="cms_page_edit")
-     * @Method("GET")
-     * @Template()
-     */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -150,14 +98,6 @@ class PageController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-
-    /**
-    * Creates a form to edit a Page entity.
-    *
-    * @param Page $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(Page $entity)
     {
         $form = $this->createForm(new PageType(), $entity, array(
@@ -169,13 +109,6 @@ class PageController extends Controller
 
         return $form;
     }
-    /**
-     * Edits an existing Page entity.
-     *
-     * @Route("/{id}", name="cms_page_update")
-     * @Method("PUT")
-     * @Template("AppBundle:Page:edit.html.twig")
-     */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -202,12 +135,6 @@ class PageController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-    /**
-     * Deletes a Page entity.
-     *
-     * @Route("/{id}", name="cms_page_delete")
-     * @Method("DELETE")
-     */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
@@ -227,14 +154,6 @@ class PageController extends Controller
 
         return $this->redirect($this->generateUrl('cms_page'));
     }
-
-    /**
-     * Creates a form to delete a Page entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
