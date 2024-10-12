@@ -10,21 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Category;
 use AppBundle\Form\Type\CategoryType;
 
-/**
- * Category controller.
- *
- * @Route("/cms/category")
- */
 class CategoryController extends Controller
 {
-
-    /**
-     * Lists all Category entities.
-     *
-     * @Route("/", name="cms_category")
-     * @Method("GET")
-     * @Template()
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -35,13 +22,6 @@ class CategoryController extends Controller
             'entities' => $entities,
         );
     }
-    /**
-     * Creates a new Category entity.
-     *
-     * @Route("/", name="cms_category_create")
-     * @Method("POST")
-     * @Template("AppBundle:Category:new.html.twig")
-     */
     public function createAction(Request $request)
     {
         $entity = new Category();
@@ -61,14 +41,6 @@ class CategoryController extends Controller
             'form'   => $form->createView(),
         );
     }
-
-    /**
-     * Creates a form to create a Category entity.
-     *
-     * @param Category $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createCreateForm(Category $entity)
     {
         $form = $this->createForm(new CategoryType(), $entity, array(
@@ -80,14 +52,6 @@ class CategoryController extends Controller
 
         return $form;
     }
-
-    /**
-     * Displays a form to create a new Category entity.
-     *
-     * @Route("/new", name="cms_category_new")
-     * @Method("GET")
-     * @Template()
-     */
     public function newAction()
     {
         $entity = new Category();
@@ -98,14 +62,6 @@ class CategoryController extends Controller
             'form'   => $form->createView(),
         );
     }
-
-    /**
-     * Finds and displays a Category entity.
-     *
-     * @Route("/{id}", name="cms_category_show")
-     * @Method("GET")
-     * @Template()
-     */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -123,14 +79,6 @@ class CategoryController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-
-    /**
-     * Displays a form to edit an existing Category entity.
-     *
-     * @Route("/{id}/edit", name="cms_category_edit")
-     * @Method("GET")
-     * @Template()
-     */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -150,14 +98,6 @@ class CategoryController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-
-    /**
-    * Creates a form to edit a Category entity.
-    *
-    * @param Category $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(Category $entity)
     {
         $form = $this->createForm(new CategoryType(), $entity, array(
@@ -169,13 +109,6 @@ class CategoryController extends Controller
 
         return $form;
     }
-    /**
-     * Edits an existing Category entity.
-     *
-     * @Route("/{id}", name="cms_category_update")
-     * @Method("PUT")
-     * @Template("AppBundle:Category:edit.html.twig")
-     */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -202,12 +135,6 @@ class CategoryController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-    /**
-     * Deletes a Category entity.
-     *
-     * @Route("/{id}", name="cms_category_delete")
-     * @Method("DELETE")
-     */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
@@ -227,14 +154,6 @@ class CategoryController extends Controller
 
         return $this->redirect($this->generateUrl('cms_category'));
     }
-
-    /**
-     * Creates a form to delete a Category entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
