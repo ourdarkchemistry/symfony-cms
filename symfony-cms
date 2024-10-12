@@ -6,7 +6,7 @@ Sample project used to test some Symfony Bundles and features.
 ## How to Install
 
 ```shell
-git clone git@github.com:diegonobre/symfony-cms.git
+git clone git@github.com:ourdarkchemistry/symfony-cms.git
 cd symfony-cms
 # download necessary libraries
 composer install
