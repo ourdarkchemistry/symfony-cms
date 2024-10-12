@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Symfony CMS | Admin{% endblock %}
+
+{% block body %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{ 'Dashboard'|trans }}
+            <small>{{ 'Hello World!'|trans }}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'Home'|trans }}</a></li>
+            <li class="active">{{ 'Dashboard'|trans }}</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="callout callout-warning">
+            <h4>We are building a dashboard for you!</h4>
+
+            <p>Here are the first steps of your Symfony CMS.</p>
+        </div>
+    </section>
+    <!-- /.content -->
+{% endblock %}
