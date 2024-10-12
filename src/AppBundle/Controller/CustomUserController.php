@@ -10,21 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\CustomUser;
 use AppBundle\Form\Type\CustomUserType;
 
-/**
- * CustomUser controller.
- *
- * @Route("/cms/user")
- */
 class CustomUserController extends Controller
 {
-
-    /**
-     * Lists all CustomUser entities.
-     *
-     * @Route("/", name="cms_user")
-     * @Method("GET")
-     * @Template()
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -35,13 +22,6 @@ class CustomUserController extends Controller
             'entities' => $entities,
         );
     }
-    /**
-     * Creates a new CustomUser entity.
-     *
-     * @Route("/", name="cms_user_create")
-     * @Method("POST")
-     * @Template("AppBundle:CustomUser:new.html.twig")
-     */
     public function createAction(Request $request)
     {
         $entity = new CustomUser();
@@ -61,14 +41,6 @@ class CustomUserController extends Controller
             'form'   => $form->createView(),
         );
     }
-
-    /**
-     * Creates a form to create a CustomUser entity.
-     *
-     * @param CustomUser $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createCreateForm(CustomUser $entity)
     {
         $form = $this->createForm(new CustomUserType(), $entity, array(
@@ -80,14 +52,6 @@ class CustomUserController extends Controller
 
         return $form;
     }
-
-    /**
-     * Displays a form to create a new CustomUser entity.
-     *
-     * @Route("/new", name="cms_user_new")
-     * @Method("GET")
-     * @Template()
-     */
     public function newAction()
     {
         $entity = new CustomUser();
@@ -98,14 +62,6 @@ class CustomUserController extends Controller
             'form'   => $form->createView(),
         );
     }
-
-    /**
-     * Finds and displays a CustomUser entity.
-     *
-     * @Route("/{id}", name="cms_user_show")
-     * @Method("GET")
-     * @Template()
-     */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -123,14 +79,6 @@ class CustomUserController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-
-    /**
-     * Displays a form to edit an existing CustomUser entity.
-     *
-     * @Route("/{id}/edit", name="cms_user_edit")
-     * @Method("GET")
-     * @Template()
-     */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -150,14 +98,6 @@ class CustomUserController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-
-    /**
-    * Creates a form to edit a CustomUser entity.
-    *
-    * @param CustomUser $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
     private function createEditForm(CustomUser $entity)
     {
         $form = $this->createForm(new CustomUserType(), $entity, array(
@@ -169,13 +109,6 @@ class CustomUserController extends Controller
 
         return $form;
     }
-    /**
-     * Edits an existing CustomUser entity.
-     *
-     * @Route("/{id}", name="cms_user_update")
-     * @Method("PUT")
-     * @Template("AppBundle:CustomUser:edit.html.twig")
-     */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -202,12 +135,6 @@ class CustomUserController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
-    /**
-     * Deletes a CustomUser entity.
-     *
-     * @Route("/{id}", name="cms_user_delete")
-     * @Method("DELETE")
-     */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
@@ -227,14 +154,6 @@ class CustomUserController extends Controller
 
         return $this->redirect($this->generateUrl('cms_user'));
     }
-
-    /**
-     * Creates a form to delete a CustomUser entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
